@@ -1,0 +1,61 @@
+.cardModule {
+    box-shadow: 0 2px 4px 0 rgba(34, 36, 38, .12), 0 2px 10px 0 rgba(34, 36, 38, .15);
+    padding: 0;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+}
+
+.leftArrow {
+    bottom: 50%;
+    left: 10px;
+    transform: translateY(50%);
+}
+
+.rightArrow {
+    bottom: 50%;
+    right: 15px;
+    transform: translateY(50%);
+}
+
+.controls {
+    /* position: fixed; */
+    color: white;
+    cursor: pointer;
+}
+
+.time {
+    transition: .35s ease-out;
+}
+
+.btnControl {
+    background: none;
+    border: none;
+    position: fixed;
+    z-index: 25;
+}
+
+@media screen and (max-width: 750px) {
+    .btnControl {
+        display: none;
+    }
+}
+
+.likeContainer {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    z-index: 10;
+}
+
+.likeContainer i {
+    top: 8px;
+    right: 8px;
+    font-size: 50px;
+    cursor: pointer;
+    color: white;
+}
+
+.likeContainer i.active {
+    color: #f81a2c
+}

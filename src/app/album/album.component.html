@@ -1,0 +1,48 @@
+<div class="photoContainer">
+
+    <div *ngFor="let pho of album.photos" class="photoElement">
+
+        <div class="photo" id="photo{{ pho.id }}" [routerLink]="['show', pho.id]">
+
+        </div>
+
+        <i class="material-icons" *ngIf="!pho.select" (click)="likePhoto(pho)">favorite_border</i>
+        <i class="material-icons active" *ngIf="pho.select" (click)="likePhoto(pho)">favorite</i>
+
+    </div>
+
+</div>
+
+<div class="counter" [ngClass]="{ 'warning': album.countSelectedPhoto() > album.disponible , 'correct': album.countSelectedPhoto() == album.disponible }">
+    <h5>{{ album.countSelectedPhoto() }} / {{ album.disponible}}</h5>
+</div>
+
+
+<div class="floatOptions">
+
+    <div class="moreOptions">
+
+        <button [routerLink]="['./confirm']" id="cancelButton" *ngIf="album.status < 3">
+            <i class="material-icons">save</i>
+            <span>Guardar Selección</span>
+        </button>
+
+        <button id="cancelButton" *ngIf="album.status == 4">
+            <i class="material-icons">file_download</i>
+            <span>Descargar Fotos</span>
+        </button>
+
+        <button [routerLink]="['./selected']" id="searchButton">
+            <i class="material-icons">assignment_turned_in</i>
+            <span>Ver Fotos Seleccionadas</span>
+        </button>
+
+    </div>
+
+    <button class="floatOptionPrincipal">
+        <i class="material-icons">settings</i>
+    </button>
+
+</div>
+
+<router-outlet></router-outlet>

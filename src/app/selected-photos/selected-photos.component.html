@@ -1,0 +1,29 @@
+<div class="background" [@background]></div>
+<div id="createCard" @principal>
+
+    <a [routerLink]="['../']">
+        <div id="cerrarBtn"> Cerrar <i class="material-icons">close</i></div>
+    </a>
+
+
+    <div>
+        <h1 align="center">Fotos seleccionadas</h1>
+
+
+        <div class="photoContainer">
+
+            <div *ngFor="let pho of album.photos" class="photoElement">
+
+                <div class="photo" id="selected{{ pho.id }}" [routerLink]="['../show', pho.id]">
+
+                </div>
+
+                <i class="material-icons" *ngIf="!pho.select" (click)="likePhoto(pho)">favorite_border</i>
+                <i class="material-icons active" *ngIf="pho.select" (click)="likePhoto(pho)">favorite</i>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

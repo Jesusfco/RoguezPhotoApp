@@ -1,0 +1,35 @@
+<div class="cardSpace" [@background]="state.background">
+
+
+    <div class="closeCardBackground" (click)="closePop()">
+        <h5 class="closeIcon">
+            <i class="material-icons">close</i>
+        </h5>
+    </div>
+
+
+
+
+    <div class="cardModule" [@card]="state.card">
+        <h3>Ha Seleccionado #{{ album.selected }} de {{ album.disponible}}</h3>
+
+        <div *ngIf="album.selected == album.disponible && album.disponible != 0">
+            <h4>¡Perfecto! ¿Desea Guardar su selección?</h4>
+            <button *ngIf="!request" class="btn btnAccept" (click)="sendSelection()">Guardar Seleccion</button>
+            <button *ngIf="request" class="btn" disabled>Guardar Seleccion</button>
+        </div>
+
+        <div *ngIf="album.selected > album.disponible">
+            <h4>Deseleccione algunas fotos</h4>
+            <button class="btn btnCancel" [routerLink]="['../selected']">Administrar Fotos</button>
+        </div>
+
+        <div *ngIf="album.selected < album.disponible">
+            <h4>Aun puede seleccionar mas fotos</h4>
+            <button class="btn btnAccept" [routerLink]="['../selected']">Administrar Fotos</button>
+        </div>
+
+    </div>
+
+
+</div>

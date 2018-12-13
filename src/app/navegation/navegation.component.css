@@ -1,0 +1,308 @@
+﻿.nav {
+    position: fixed;
+    height: 48px;
+    width: 100%;
+    background: WHITE;
+    z-index: 4;
+    color: rgba(0, 0, 0, .87);
+    /* padding: 5px 20px; */
+    border-bottom: 1px solid rgba(34, 36, 38, .15);
+    box-shadow: 0 1px 2px 0 rgba(34, 36, 38, .15);
+    display: flex;
+    justify-content: space-around;
+    top: 0;
+}
+
+.nav * {
+    font-family: "Gotham SSm A", "Gotham SSm B", Arial, Verdana, sans-serif;
+}
+
+.nav div {
+    /* padding: 0 10px 0 10px; */
+}
+
+.nav .logo img {
+    max-height: 100%;
+    padding: 5px
+}
+
+.lines p {
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+.links {
+    display: flex;
+    width: fit-content;
+    cursor: pointer;
+}
+
+.menuIcon {
+    display: none;
+}
+
+.links div {
+    height: 100%;
+}
+
+.lines {
+    position: relative;
+}
+
+.lines::before {
+    position: absolute;
+    content: '';
+    /* top: 0; */
+    /* right: 0; */
+    height: 100%;
+    width: 1px;
+    background: rgba(34, 36, 38, .1);
+}
+
+.lines::after {
+    position: absolute;
+    content: '';
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 1px;
+    background: rgba(34, 36, 38, .1);
+}
+
+.nav .logo {
+    height: 100%;
+    cursor: pointer;
+}
+
+.nav a {
+    color: rgba(0, 0, 0, .87);
+    text-decoration: none;
+}
+
+@media screen and (max-width: 750px) {
+    .nav .links {
+        display: none;
+    }
+    .nav .menuIcon {
+        display: block;
+        padding: 10px;
+    }
+}
+
+#userName {
+    position: fixed;
+    top: 3px;
+    right: 15px;
+    text-align: right;
+}
+
+#userName img {
+    height: 30px;
+    display: inline-block;
+    margin: 5px;
+}
+
+#userName p {
+    display: inline-block;
+    padding-left: 20px;
+    margin: 0;
+}
+
+
+/* Todo lo que tenga que ver con el menu Alado */
+
+.sideNav {
+    position: fixed;
+    height: 100vh;
+    width: 250px;
+    top: 0;
+    padding: 48px 0px;
+    background: white;
+    z-index: 3;
+    /* outline: 1px solid #333;
+    overflow-y: scroll; */
+    -webkit-box-shadow: 0px 2px 32px -4px rgba(0, 0, 0, 0.7);
+    -moz-box-shadow: 0px 2px 32px -4px rgba(0, 0, 0, 0.7);
+    box-shadow: 0px 2px 32px -4px rgba(0, 0, 0, 0.7);
+}
+
+.sideNav h5 {
+    padding: 6px 10px;
+    color: #333333;
+    margin: 0;
+    font-size: 11px;
+    border-bottom: 1px solid #DDDDDD
+}
+
+.sideNav ul {
+    list-style-type: none;
+    margin: 0px 0px 0px 20px;
+    padding: 0;
+}
+
+.sideNav button {
+    text-align: left;
+    width: 100%;
+}
+
+.movilView {
+    display: none;
+}
+
+
+/* ZONA DE INFORMACION DEL USUARIO */
+
+#userInfSection {
+    height: 135px;
+    width: 100%;
+    position: relative;
+    background-size: 100%;
+}
+
+#userInfSection div {
+    padding: 15px;
+}
+
+#userInfSection img {
+    width: 60px;
+    border-radius: 50%;
+}
+
+#userInfSection p {
+    color: white !important;
+    margin: 10px 0 0 0;
+    font-size: 12px;
+    text-transform: capitalize;
+}
+
+#userInfSection #emailInf {
+    color: #CECECE;
+    font-size: 11px;
+    margin-top: 5px;
+    text-transform: lowercase;
+}
+
+#userInfSection #userTypeInf {
+    font-size: 10px;
+    position: absolute;
+    top: 0;
+    right: 05px;
+    margin: 0;
+    padding: 0
+}
+
+userTypeInf {
+    right: 15px;
+    text-align: right;
+}
+
+
+/* Area de Aplicacion principal */
+
+.principalCard {
+    width: 100%;
+    padding: 48px 0 100px 0;
+    background: white;
+    display: block;
+    min-height: 100vh;
+    font-weight: 300px;
+    position: relative;
+}
+
+.notified {
+    color: red;
+    text-align: right;
+    position: absolute;
+    right: 13px;
+}
+
+@media screen and (max-width: 750px) {
+    nav {
+        height: 40px;
+    }
+    .principalCard {
+        width: 100%;
+    }
+    .principal {
+        padding-top: 40px !important;
+    }
+    .sideNav {
+        padding: 40px 0px;
+        -webkit-box-shadow: 0px 2px 31px 6px rgba(0, 0, 0, 0.7);
+        -moz-box-shadow: 0px 2px 31px 6px rgba(0, 0, 0, 0.7);
+        box-shadow: 0px 2px 31px 6px rgba(0, 0, 0, 0.493);
+    }
+    .pcView {
+        display: none;
+    }
+    .movilView {
+        display: initial;
+    }
+}
+
+.bodyMove {
+    transition: .7s ease;
+    transform: translateX(0);
+}
+
+.bodyMove.active {
+    transform: translateX(-250px);
+}
+
+.shadow {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background: black;
+    opacity: 0;
+    transition: .7s ease;
+    transform: translateX(0);
+    z-index: 20;
+}
+
+.shadow.display {
+    display: block;
+}
+
+.shadow.active {
+    opacity: .6;
+    transform: translateX(-250px);
+}
+
+.menuPhone {
+    z-index: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background: #1b1c1d;
+    height: 100vh;
+    width: 250px;
+}
+
+.menuPhone * {
+    color: white;
+}
+
+.menuPhone .logoPrincipal {
+    width: 88%;
+    display: block;
+    margin: 0 auto;
+}
+
+.menuPhone .logoBottom {
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+    margin-top: 75px;
+}
+
+.menuPhone a {
+    border-bottom: 1px solid #4c4b4b;
+    text-decoration: none;
+    padding: 0 20px;
+    display: block;
+    margin: 12px 0;
+}

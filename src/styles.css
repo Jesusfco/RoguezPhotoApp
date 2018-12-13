@@ -1,1 +1,450 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css?family=Bai+Jamjuree:200,200i,300,300i,400,700');
+body {
+    padding: 0;
+    margin: 0;
+    background: whitesmoke;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Bai Jamjuree', sans-serif;
+    font-weight: 400;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: "Gotham SSm A", "Gotham SSm B", Arial, Verdana, sans-serif;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.material-icons {
+    font-family: 'Material Icons' !important;
+}
+
+.container {
+    width: 81%;
+    max-width: 1100px;
+    display: block;
+    margin: 0 auto;
+}
+
+.routeTitle {
+    text-align: center;
+}
+
+.center {
+    display: block;
+    margin: 0 auto;
+}
+
+.centerText {
+    text-align: center;
+}
+
+.alignLeft {
+    text-align: left;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-color: grey;
+    text-align: center;
+}
+
+thead {
+    background: whitesmoke;
+    display: table-header-group;
+    vertical-align: middle;
+    border-bottom: 1px solid rgb(194, 194, 194);
+}
+
+td {
+    padding: 5px 5px;
+    text-transform: capitalize;
+}
+
+tr:hover {
+    background: rgb(235, 235, 235);
+    cursor: pointer;
+}
+
+tr {
+    padding: 5px 4px;
+    height: 50px;
+    transition: .5s;
+    border-bottom: 1px solid rgb(233, 233, 233);
+    ;
+}
+
+th {
+    padding: 5px;
+}
+
+@media screen and (max-width: 1000px) {
+    .responsive-table {
+        overflow-x: scroll;
+    }
+    .tbody {
+        text-transform: capitalize;
+    }
+    td {
+        font-size: 14px;
+    }
+    .routeTitle {
+        font-size: 20px
+    }
+}
+
+#headerCard {
+    background-color: #3f51b5;
+    color: white;
+    padding: 10px 30px 10px 30px;
+}
+
+.closeCardBackground {
+    background: rgba(0, 0, 0, .5);
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9
+}
+
+.closeIcon {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    margin: 0px;
+    font-size: 25px;
+    color: #D1D1D1;
+    cursor: pointer;
+}
+
+.cardSpace {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9;
+}
+
+.cardModule {
+    border-radius: 2px;
+    width: 50%;
+    max-width: 1000px;
+    -webkit-box-shadow: 0px 0px 57px -4px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 57px -4px rgba(0, 0, 0, 0.75);
+    box-shadow: 0 11px 15px -7px rgba(0, 0, 0, .2), 0 24px 38px 3px rgba(0, 0, 0, .14), 0 9px 46px 8px rgba(0, 0, 0, .12);
+    background: white;
+    padding: 25px;
+    z-index: 10;
+    position: relative;
+}
+
+
+/* formularios inputs and buttons */
+
+.flexRow {
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+}
+
+.flexRow div {
+    padding: 10px;
+}
+
+input,
+select {
+    border: none;
+    background: #ECECEC;
+    padding: 8px;
+    border-radius: 3px;
+    margin-bottom: 7px;
+    width: 100%;
+}
+
+.btn {
+    width: 100%;
+    padding: 10px;
+    color: white;
+    transition: .45s;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:disabled {
+    background: #dddddd;
+}
+
+.btnAccept {
+    background: #a22676;
+}
+
+.btnAccept:hover {
+    background: rgb(0, 129, 123);
+}
+
+.btnAccept:focus {
+    background: rgb(0, 129, 123);
+}
+
+.btnCancel {
+    background: rgb(255, 0, 0);
+}
+
+.btnCancel:focus {
+    background: rgb(190, 0, 0);
+}
+
+.btnCancel:hover {
+    background: rgb(190, 0, 0);
+}
+
+.inputError {
+    background: rgb(243, 181, 181)
+}
+
+.inputVerified {
+    background: rgb(178, 236, 178)
+}
+
+.smallError {
+    text-align: right;
+    width: 100%;
+    float: right;
+    color: red;
+    position: absolute;
+    margin-top: -7px;
+    left: 0;
+}
+
+.loadingForm {
+    opacity: .4 !important;
+}
+
+.barLoader {
+    width: 100%;
+    z-index: 100;
+    position: fixed !important;
+    top: 0;
+}
+
+.mat-progress-bar {
+    top: 0;
+    left: 0;
+}
+
+.mat-spinner {
+    position: absolute !important;
+    margin: 0 auto;
+    z-index: 100;
+    display: block;
+    right: 0;
+    left: 0;
+    margin-top: 80px;
+}
+
+@media screen and (max-width: 750px) {
+    .cardModule {
+        width: 90%;
+        max-height: 80%;
+        overflow-y: scroll;
+    }
+}
+
+
+/* Inputs Grid Styles */
+
+.l12 {
+    width: 100%;
+}
+
+.l9 {
+    width: 75%;
+}
+
+.l6 {
+    width: 50%;
+}
+
+.l4 {
+    width: 32%;
+}
+
+.l3 {
+    width: 24%;
+}
+
+@media screen and (max-width: 1000px) {
+    .container {
+        width: 92%;
+    }
+    .l9 {
+        width: 100%;
+    }
+    .l6 {
+        width: 100%;
+    }
+    .l4 {
+        width: 50%;
+    }
+    .l3 {
+        width: 50%;
+    }
+    .m6 {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .l4 {
+        width: 100%;
+    }
+    .l3 {
+        width: 100%;
+    }
+    .m6 {
+        width: 100%;
+    }
+    .s6 {
+        width: 50%;
+    }
+}
+
+.divSearch {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 7px;
+    width: fit-content;
+    position: relative;
+}
+
+.divSearch input {
+    background: white;
+    border: none;
+    border-radius: 2px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
+    height: 44px;
+    outline: none;
+    transition: box-shadow 200ms cubic-bezier(0.4, 0.0, 0.2, 1);
+    width: 350px;
+    max-width: 500px;
+    /* padding-right: 35px; */
+}
+
+.divSearch input:focus {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(0, 0, 0, 0.16);
+}
+
+.divSearch input:hover {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(0, 0, 0, 0.16);
+}
+
+.divSearch mat-icon {
+    position: absolute;
+    padding-top: 10px;
+    top: 1px;
+    right: 10px;
+    cursor: pointer;
+    background: white;
+    height: 25px;
+}
+
+@media screen and (max-width: 700px) {
+    .divSearch {
+        width: 100%;
+    }
+    .divSearch input {
+        width: 100%;
+    }
+}
+
+
+/*
+ *  STYLE 13
+ */
+
+#scroll-13::-webkit-scrollbar-track {
+    /* -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0); */
+    /* border-radius: 10px; */
+    background-color: rgb(255, 255, 255);
+}
+
+#scroll-13::-webkit-scrollbar {
+    width: 12px;
+    background-color: #F5F5F5;
+}
+
+#scroll-13::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    margin-right: 5px;
+    /* width: 5px; */
+    background-color: rgb(158, 158, 158);
+    border: 3px solid transparent;
+    background-clip: content-box;
+    /* background-image: -webkit-linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.4) 50%, transparent, transparent) */
+}
+
+
+/* Componentes que ocupan toda la pantalla */
+
+#createCard {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: white;
+    z-index: 10;
+    overflow-y: scroll;
+}
+
+#createCard .options {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+#createCard .options mat-icon {
+    color: black;
+    cursor: pointer;
+    margin-right: 14px;
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    background: black;
+    height: 100vh;
+    width: 100vw;
+    z-index: 9;
+}
+
+#cerrarBtn {
+    padding: 10px;
+    background: black;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    transition: .25s;
+}

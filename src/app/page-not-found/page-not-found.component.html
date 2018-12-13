@@ -1,0 +1,10 @@
+<div class="cardSpace">
+    <div>
+        <img src="{{ url.basicUrl}}images/logo/fotografiaLiliana.png">
+
+        <h2>ERROR: Esta url no existe </h2>
+        <a *ngIf="checkToken()" [routerLink]="['/myAlbums']">Regresar a la Aplicacion</a>
+        <a *ngIf="checkToken() == false" [routerLink]="['/login']">Regresar a la Aplicacion</a>
+
+    </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="cardSpace" [@background]="state.background">
+
+    <button class="btnControl leftArrow">
+        <i class="material-icons controls leftArrow"  (click)="swipeRight()">arrow_back</i>
+    </button>
+
+    <button class="btnControl rightArrow">
+        <i class="material-icons controls rightArrow" (click)="swipeLeft()">arrow_forward</i>
+    </button>
+
+
+    <div class="closeCardBackground" (click)="closePop()">
+        <h5 class="closeIcon">
+            <i class="material-icons">close</i>
+        </h5>
+    </div>
+
+
+
+    <img *ngIf="photo.basicPath2 !== null" src="{{ photo.basicPath2 }}" (touchmove)="doSomething($event)" (touchstart)="setInit($event)" (touchend)="decideFinal($event)" id="card" class="cardModule" [@card]="state.card">
+    <!-- <div *ngIf="photo.basicPath2 == null" (touchmove)="doSomething($event)" (touchstart)="setInit($event)" (touchend)="decideFinal($event)" id="card" class="cardModule" [@card]="state.card"> -->
+
+    <!-- </div> -->
+
+    <nav class="likeContainer">
+
+        <i class="material-icons" *ngIf="!photo.select" (click)="likePhoto()">favorite_border</i>
+        <i class="material-icons active" *ngIf="photo.select" (click)="likePhoto()">favorite</i>
+    </nav>
+
+
+
+
+
+</div>

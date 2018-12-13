@@ -1,0 +1,28 @@
+<div class="sectionClient">
+
+    <div class="backGround"></div>
+
+
+    <br>
+    <div class="welcome">
+        <h2 class="centerText absolute">Hola {{ user.name }}!</h2>
+        <p class="centerText absolute">Esta es una seccion especialmente creada para ti</p>
+    </div>
+
+    <br><br><br><br>
+
+    <br>
+
+    <div class="albunes">
+
+        <div id="album" *ngFor="let n of albums">
+            <a [routerLink]="['../album', n.id]">
+                <img src="{{ n.photoPath2}}">
+                <h4 class="centerText">{{n.name}}</h4>
+            </a>
+            <h5 class="centerText">{{ n.date}}</h5>
+        </div>
+
+    </div>
+
+</div>
