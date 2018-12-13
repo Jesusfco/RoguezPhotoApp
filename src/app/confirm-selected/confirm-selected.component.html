@@ -11,22 +11,22 @@
 
 
     <div class="cardModule" [@card]="state.card">
-        <h3>Ha Seleccionado #{{ album.selected }} de {{ album.disponible}}</h3>
+        <h3 class="centerText">Ha Seleccionado #{{ album.selected }} de {{ album.photos_quantity}}</h3>
 
-        <div *ngIf="album.selected == album.disponible && album.disponible != 0">
-            <h4>¡Perfecto! ¿Desea Guardar su selección?</h4>
+        <div *ngIf="album.selected == album.photos_quantity && album.photos_quantity != 0">
+            <h4 class="centerText">¡Perfecto! ¿Desea Guardar su selección?</h4>
             <button *ngIf="!request" class="btn btnAccept" (click)="sendSelection()">Guardar Seleccion</button>
             <button *ngIf="request" class="btn" disabled>Guardar Seleccion</button>
         </div>
 
-        <div *ngIf="album.selected > album.disponible">
+        <div *ngIf="album.selected > album.photos_quantity">
             <h4>Deseleccione algunas fotos</h4>
             <button class="btn btnCancel" [routerLink]="['../selected']">Administrar Fotos</button>
         </div>
 
-        <div *ngIf="album.selected < album.disponible">
+        <div *ngIf="album.selected < album.photos_quantity">
             <h4>Aun puede seleccionar mas fotos</h4>
-            <button class="btn btnAccept" [routerLink]="['../selected']">Administrar Fotos</button>
+            <button class="btn btnAccept" [routerLink]="['../']">Seleccionar Fotos</button>
         </div>
 
     </div>

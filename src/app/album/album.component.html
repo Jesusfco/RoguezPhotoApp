@@ -13,8 +13,8 @@
 
 </div>
 
-<div class="counter" [ngClass]="{ 'warning': album.countSelectedPhoto() > album.disponible , 'correct': album.countSelectedPhoto() == album.disponible }">
-    <h5>{{ album.countSelectedPhoto() }} / {{ album.disponible}}</h5>
+<div class="counter" [ngClass]="{ 'warning': album.countSelectedPhoto() > album.photos_quantity , 'correct': album.countSelectedPhoto() == album.photos_quantity }">
+    <h5>{{ album.countSelectedPhoto() }} / {{ album.photos_quantity}}</h5>
 </div>
 
 
@@ -22,12 +22,12 @@
 
     <div class="moreOptions">
 
-        <button [routerLink]="['./confirm']" id="cancelButton" *ngIf="album.status < 3">
+        <button [routerLink]="['./confirm']" id="cancelButton" *ngIf="album.work_status_id < 3">
             <i class="material-icons">save</i>
             <span>Guardar Selección</span>
         </button>
 
-        <button id="cancelButton" *ngIf="album.status == 4">
+        <button id="cancelButton" *ngIf="album.work_status_id == 4">
             <i class="material-icons">file_download</i>
             <span>Descargar Fotos</span>
         </button>

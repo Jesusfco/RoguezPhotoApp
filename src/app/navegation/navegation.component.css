@@ -287,13 +287,14 @@ userTypeInf {
 }
 
 .menuPhone .logoPrincipal {
-    width: 88%;
+    width: 45%;
     display: block;
     margin: 0 auto;
+    margin-top: 35px;
 }
 
 .menuPhone .logoBottom {
-    width: 50%;
+    width: 75%;
     display: block;
     margin: 0 auto;
     margin-top: 75px;

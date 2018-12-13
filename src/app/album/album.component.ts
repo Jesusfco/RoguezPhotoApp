@@ -73,7 +73,7 @@ export class AlbumComponent implements OnInit {
   albumSavedLogic() {
     if(sessionStorage.getItem('albumSaved') == undefined) return;
 
-    this.album.status = 2;
+    this.album.work_status_id = 2;
     this.refreshStorageAlbum();
     sessionStorage.removeItem('albumSaved');
   }

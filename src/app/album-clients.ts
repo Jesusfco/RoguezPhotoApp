@@ -4,18 +4,21 @@ import { AlbumPhotoClients } from './album-photo-clients';
 export class AlbumClients {
 
     public id: number;
-    public client_id: number;
-    public name: String;
+    public user_id: number;
+    public title: String;
+    public resume: String;
+    public description: String;
+    public cost: number;
     public img: String;
-    public disponible: number = 0;
+    public photos_quantity: number = 0;
     public selected: number = 0;
-    public date: String;
-    public status: Number;
+    
+    public work_status_id: Number;
     public created_at: String;
     public updated_at: String;
 
     public photoPath: String;
-    public photoPath2: String;
+    
 
     public photos: Array<AlbumPhotoClients> = [];
 
@@ -26,8 +29,8 @@ export class AlbumClients {
 
     setPhotoPath() {
         let n: Url = new Url();
-        this.photoPath = n.basicUrl + 'images/aplication/clients/' +  this.id + '/principal_' + this.img;
-        this.photoPath2 = n.basicUrl + 'images/aplication/clients/' +  this.id + '/secundaria_' + this.img;
+        this.photoPath = n.basicUrl + 'img/app/works/' +  this.id + '/' + this.img;
+        
     }
 
     setSelectedPhotos() {
@@ -61,12 +64,15 @@ export class AlbumClients {
     setData(data) {
 
         this.id = parseInt(data.id);
-        this.client_id = parseInt(data.client_id);
-        this.name = data.name;
+        this.user_id = parseInt(data.user_id);
+        this.title = data.title;
+        this.resume = data.resume;
         this.img = data.img;
-        this.disponible = parseInt(data.disponible);
-        this.date = data.date;
-        this.status = parseInt(data.status);
+        this.photos_quantity = parseInt(data.photos_quantity);
+        console.log(this.photos_quantity);
+        
+        this.created_at = data.created_at;
+        this.work_status_id = parseInt(data.work_status_id);
 
         this.setPhotoPath();
 

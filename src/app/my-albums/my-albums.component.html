@@ -17,10 +17,10 @@
 
         <div id="album" *ngFor="let n of albums">
             <a [routerLink]="['../album', n.id]">
-                <img src="{{ n.photoPath2}}">
-                <h4 class="centerText">{{n.name}}</h4>
+                <img src="{{ n.photoPath}}">
+                <h4 class="centerText">{{n.title}}</h4>
             </a>
-            <h5 class="centerText">{{ n.date}}</h5>
+            <h5 class="centerText">{{ n.created_at}}</h5>
         </div>
 
     </div>

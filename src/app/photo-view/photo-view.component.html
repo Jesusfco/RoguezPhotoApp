@@ -17,7 +17,7 @@
 
 
 
-    <img *ngIf="photo.basicPath2 !== null" src="{{ photo.basicPath2 }}" (touchmove)="doSomething($event)" (touchstart)="setInit($event)" (touchend)="decideFinal($event)" id="card" class="cardModule" [@card]="state.card">
+    <img *ngIf="photo.basicPath !== null" src="{{ photo.basicPath }}" (touchmove)="doSomething($event)" (touchstart)="setInit($event)" (touchend)="decideFinal($event)" id="card" class="cardModule" [@card]="state.card">
     <!-- <div *ngIf="photo.basicPath2 == null" (touchmove)="doSomething($event)" (touchstart)="setInit($event)" (touchend)="decideFinal($event)" id="card" class="cardModule" [@card]="state.card"> -->
 
     <!-- </div> -->
