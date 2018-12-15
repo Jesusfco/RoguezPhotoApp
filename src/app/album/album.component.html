@@ -2,7 +2,7 @@
 
     <div *ngFor="let pho of album.photos" class="photoElement">
 
-        <div class="photo" id="photo{{ pho.id }}" [routerLink]="['show', pho.id]">
+        <div class="photo" id="photo{{ pho.id }}" [routerLink]="['show', pho.id]" (click)="sendAlbum()">
 
         </div>
 
@@ -22,7 +22,7 @@
 
     <div class="moreOptions">
 
-        <button [routerLink]="['./confirm']" id="cancelButton" *ngIf="album.work_status_id < 3">
+        <button [routerLink]="['./confirm']" id="cancelButton" *ngIf="album.work_status_id < 3" (click)="sendAlbum()">
             <i class="material-icons">save</i>
             <span>Guardar Selección</span>
         </button>
@@ -32,7 +32,7 @@
             <span>Descargar Fotos</span>
         </button>
 
-        <button [routerLink]="['./selected']" id="searchButton">
+        <button [routerLink]="['./selected']" id="searchButton" (click)="sendAlbum()">
             <i class="material-icons">assignment_turned_in</i>
             <span>Ver Fotos Seleccionadas</span>
         </button>

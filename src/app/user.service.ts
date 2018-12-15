@@ -4,14 +4,28 @@ import { Injectable } from '@angular/core';
 
 import { Url } from './url';
 import { Storage } from './storage';
+import { Subject, Observable } from 'rxjs';
 
 @Injectable()
 export class UserService {
 
   public link: Url = new Url();
   public token: Storage = new Storage();
+  private subject = new Subject<any>();  
   
-  constructor(private _http: HttpClient) { }
+  constructor(private _http: HttpClient) { }  
+
+  getData(): Observable<any> {
+    return this.subject.asObservable();
+  }
+
+  sendData(action: String, data: any) {
+    let message = {
+      action: action,
+      data: data
+    };
+    this.subject.next(message);
+  }
 
   login(information) {
     return this._http.post(this.link.url + 'login', information)

@@ -18,12 +18,12 @@ export class AlbumComponent implements OnInit {
   public request: Boolean = false;
   public photoChangeObserver: any;
   public albumSavedObserver: any;
+  public observerService: any;
 
   constructor(private _http: UserService,
     private router: Router,
     private actRou: ActivatedRoute) { 
-
-      this.setPhotoChangingObserver();
+      
 
       this.observerRef = actRou.params.subscribe(params => {
 
@@ -32,50 +32,52 @@ export class AlbumComponent implements OnInit {
         
       });
 
+      this._http.getData().subscribe(x => {      
+      
+        if (x.action == 'like') 
+          this.photoLike(x.data);        
+        else if(x.action == 'saved') 
+          this.albumSaved();        
+        
+      });
+
+      this.sendAlbum();
+
     }
 
   ngOnInit() {
   }
 
-  setPhotoChangingObserver() {
-    this.photoChangeObserver = setInterval(() => this.photoChanguingObserverLogic(), 200);
+ 
+  sendAlbum() {
+    setTimeout(() => {
+      this._http.sendData('album_shared', this.album);  
+    }, 200);    
   }
-
-  setAlbumSavedObserver() {
-    this.photoChangeObserver = setInterval(() => this.albumSavedLogic(), 1000);
-  }
-
   refreshStorageAlbum() {
     sessionStorage.setItem('album', JSON.stringify(this.album));
   }
 
-  photoChanguingObserverLogic() {
-    if(sessionStorage.getItem('photoChange') == undefined) return;
-
-    let p = new AlbumPhotoClients();
-    p.setFromData(JSON.parse(sessionStorage.getItem('photoChange')));
+  photoLike(photo) {  
 
     for(let i = 0; i < this.album.photos.length; i++) {
       
-      if(this.album.photos[i].id == p.id) {
-        this.album.photos[i].select = p.select;
+      if(this.album.photos[i].id == photo.id) {
+
+        this.album.photos[i].select = photo.select;
         break;
+
       }
 
     }
 
     this.refreshStorageAlbum();
 
-    sessionStorage.removeItem('photoChange');
-
   }
 
-  albumSavedLogic() {
-    if(sessionStorage.getItem('albumSaved') == undefined) return;
-
+  albumSaved() {    
     this.album.work_status_id = 2;
-    this.refreshStorageAlbum();
-    sessionStorage.removeItem('albumSaved');
+    this.refreshStorageAlbum();    
   }
 
   getPhotos() {
@@ -88,8 +90,8 @@ export class AlbumComponent implements OnInit {
         let d: any = data
         this.album.setData(d.album);
         this.album.setPhotosData(d.photos);
-        sessionStorage.setItem('album', JSON.stringify(this.album));
-        sessionStorage.setItem('albumCharge', '1');
+        this.sendAlbum();
+        sessionStorage.setItem('album', JSON.stringify(this.album));        
 
         setTimeout(() => {
 

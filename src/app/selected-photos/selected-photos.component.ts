@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FadeAnimation, SlideAnimation } from '../animations';
 import { AlbumClients } from '../album-clients';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-selected-photos',
@@ -15,17 +16,22 @@ export class SelectedPhotosComponent implements OnInit {
 
   public album: AlbumClients = new AlbumClients();
 
-  constructor() {
+  constructor(private _http: UserService) {                
+
+    this._http.getData().subscribe(x => {      
+      
+      if (x.action == 'album_shared') {
+        this.album.setData(x.data);
+        this.album.setPhotosDataLike(x.data.photos);
+        setTimeout(() => {
+
+          this.setBackground();
     
-    let album = JSON.parse(sessionStorage.getItem('album'));
-    this.album.setData(album);
-    this.album.setPhotosDataLike(album.photos);
-
-    setTimeout(() => {
-
-      this.setBackground();
-
-    }, 100);
+        }, 100);
+      }
+        
+      
+    });
   }
 
   ngOnInit() {
@@ -33,8 +39,7 @@ export class SelectedPhotosComponent implements OnInit {
 
   likePhoto(pho) {
     pho.select = !pho.select;
-
-    sessionStorage.setItem('photoChange', JSON.stringify(pho));
+    this._http.sendData('like', pho);    
 
   }
 

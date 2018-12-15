@@ -17,7 +17,7 @@ export class ConfirmSelectedComponent implements OnInit {
     card: 'initial',
   };
 
-  albumPhotosObserver: any ;
+  
   public request: Boolean = false;
 
   public album: AlbumClients =  new AlbumClients();
@@ -30,9 +30,18 @@ export class ConfirmSelectedComponent implements OnInit {
 
   }
 
-  constructor(private router: Router, private _http: UserService) { 
+  constructor(private router: Router, private _http: UserService) {                
 
-    this.setAlbumPhotosObserver();
+    this._http.getData().subscribe(x => {      
+      
+      if (x.action == 'album_shared') {
+        
+        this.album.setData(x.data);        
+        this.album.setSelectedPhotos();
+      }
+        
+      
+    });
   }
 
   ngOnInit() {
@@ -43,31 +52,6 @@ export class ConfirmSelectedComponent implements OnInit {
     }, 10);
 
   }
-
-  setAlbumPhotosObserver() {
-    this.albumPhotosObserver = setInterval(() => this.albumPhotosObserverLogic(), 500);
-  }
-
-  albumPhotosObserverLogic() {
-    if(sessionStorage.getItem('album') == undefined) return;
-
-    this.album = JSON.parse(sessionStorage.getItem('album'));
-    // this.album.setSelectedPhotos();
-    let count = 0 ;
-    
-    for(let p of this.album.photos){
-
-        if(p.select == true) { 
-            count++;
-        }
-    }
-
-    this.album.selected = count;
-
-    clearInterval(this.albumPhotosObserver);
-
-  }
-
 
   closePop(){
 

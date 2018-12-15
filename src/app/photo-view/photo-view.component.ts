@@ -3,6 +3,7 @@ import { cardPop, backgroundOpacity } from '../animations';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlbumClients } from '../album-clients';
 import { AlbumPhotoClients } from '../album-photo-clients';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-photo-view',
@@ -74,7 +75,8 @@ export class PhotoViewComponent implements OnInit {
   }
 
   constructor(private router: Router,
-              private actRou: ActivatedRoute) {
+              private actRou: ActivatedRoute,
+              private _http: UserService) {
 
 
                 
@@ -84,9 +86,15 @@ export class PhotoViewComponent implements OnInit {
                   this.setObserverPhotoData();
                   
                 });
+
+                this._http.getData().subscribe(x => {      
+      
+                  if (x.action == 'album_shared') 
+                    this.setAlbum(x.data);                                           
+                  
+                });
                 
-                this.setAlbumPhotosObserver();
-                this.setObserverChangeAlbum();  
+              
                 
   }
 
@@ -97,33 +105,9 @@ export class PhotoViewComponent implements OnInit {
     }, 10);
   }
 
-  setAlbumPhotosObserver() {
-    this.albumPhotosObserver = setInterval(() => this.albumPhotosObserverLogic(), 500);
-  }
-
-  albumPhotosObserverLogic() {
-    if(sessionStorage.getItem('album') == undefined) return;
-
-    this.album = JSON.parse(sessionStorage.getItem('album'));
-    this.setPhoto();
-    this.getBeforeAfterProduct();
-    clearInterval(this.albumPhotosObserver);
-
-  }
-
-  setObserverChangeAlbum() {
-    this.changeAlbumPhotoObserver = setInterval(() => this.changeAlbumObserverLogic(), 500);
-  }
-
-  changeAlbumObserverLogic() {
-
-    if(sessionStorage.getItem('albumCharge') == undefined) return;
-
-    this.album = JSON.parse(sessionStorage.getItem('album'));
-    this.setPhoto();
-    this.getBeforeAfterProduct();
-    sessionStorage.removeItem('albumCharge');
-    
+  setAlbum(album){        
+  
+    this.album.setData(album)  ;
 
   }
 
@@ -235,7 +219,8 @@ export class PhotoViewComponent implements OnInit {
 
   likePhoto() {
     this.photo.select = !this.photo.select;
-    sessionStorage.setItem('photoChange', JSON.stringify(this.photo));
+    
+    this._http.sendData('like', this.photo);
 
     for(let i = 0; i < this.album.photos.length; i++) {
       

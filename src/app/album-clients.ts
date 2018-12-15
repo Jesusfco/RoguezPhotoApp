@@ -74,6 +74,18 @@ export class AlbumClients {
         this.created_at = data.created_at;
         this.work_status_id = parseInt(data.work_status_id);
 
+        if(data.photos != undefined) {
+            
+            this.photos = [];
+
+            for(let pho of data.photos) {
+                let photo = new AlbumPhotoClients();
+                photo.setFromData(pho);
+                this.photos.push(photo);
+            }
+
+        }
+
         this.setPhotoPath();
 
     }
