@@ -19,7 +19,7 @@ export class SelectedPhotosComponent implements OnInit {
   constructor(private _http: UserService) {                
 
     this._http.getData().subscribe(x => {      
-      
+      console.log(x);
       if (x.action == 'album_shared') {
         this.album.setData(x.data);
         this.album.setPhotosDataLike(x.data.photos);

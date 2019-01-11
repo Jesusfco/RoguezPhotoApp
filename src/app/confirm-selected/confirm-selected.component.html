@@ -21,7 +21,7 @@
 
         <div *ngIf="album.selected > album.photos_quantity">
             <h4>Deseleccione algunas fotos</h4>
-            <button class="btn btnCancel" [routerLink]="['../selected']">Administrar Fotos</button>
+            <button class="btn btnCancel" [routerLink]="['../selected']" (click)="sendAlbum()">Administrar Fotos</button>
         </div>
 
         <div *ngIf="album.selected < album.photos_quantity">

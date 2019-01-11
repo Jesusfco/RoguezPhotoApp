@@ -39,7 +39,6 @@ export class ConfirmSelectedComponent implements OnInit {
         this.album.setData(x.data);        
         this.album.setSelectedPhotos();
       }
-        
       
     });
   }
@@ -87,6 +86,12 @@ export class ConfirmSelectedComponent implements OnInit {
     ).then(
       () => this.request = false
     );
+  }
+
+  sendAlbum() {
+    setTimeout(() => {
+      this._http.sendData('album_shared', this.album);  
+    }, 200);    
   }
 
 }
